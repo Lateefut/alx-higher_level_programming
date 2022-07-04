@@ -1,14 +1,27 @@
-#include "lists.h"
-#include <object.h>
-#include <listobject.h>
-#include <stdio.h>
-/**
- * print_python_list_info - Create a C function that prints some basic info
- * about Python lists.
- * @head: head to the linked list
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome
- */
+#include <Python.h>
+
+/*
+includes listobject.h
+VIEW HEADER-> https://github.com/python/cpython/blob/master/Include/listobject.h
+VIEW MANUAL-> https://docs.python.org/3.4/c-api/list.html
+
+includes object.h
+VIEW HEADER-> https://docs.python.org/3.4/c-api/structures.html)
+VIEW MANUAL-> https://github.com/python/cpython/blob/master/Include/object.h
+*/
+
 void print_python_list_info(PyObject *p)
 {
-    return (0);
+	Py_ssize_t size, alloc, idx;
+
+	size = PyList_Size(p);
+	alloc = ((PyListObject *)p)->allocated;
+	printf("[*] Size of the Python List = %ld\n", size);
+	printf("[*] Allocated = %ld\n", alloc);
+	for (idx = 0; idx < size; idx++)
+	{
+		printf("Element %ld: %s\n",
+		       idx,
+		       (PY_TYPE(PyList_GetItem(p, idx)))->tp_name);
+	}
 }
