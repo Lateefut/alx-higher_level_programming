@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 def divisible_by_2(my_list=[]):
-    _my_list = []
-    for each_number in my_list:
-        if not each_number % 2:
-                _my_list.append(True)
-        else:
-                _my_list.append(False)
-    return _my_list
+    if my_list:
+        values = []
+        for i in my_list:
+            if i % 2 is 0:
+                values.append(True)
+            else:
+                values.append(False)
+        return values
+
+# return [(i % 2 == 0) for i in my_list]
