@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-def multiply_by_2(a_dictionary):
-    _a_dictionary = {}
-    for key, val in a_dictionary.items():
-        _a_dictionary[key] = val *2
-    return _a_dictionary
+def multiply_by_2(a_dictionary, key=""):
+    if key in a_dictionary:
+        del a_dictionary[key]
+    return (a_dictionary)
